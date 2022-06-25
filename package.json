@@ -2,7 +2,6 @@
   "name": "firebase-auth",
   "version": "0.1.0",
   "private": false,
-  "homepage": "https://pkachu17.github.io/vozzwebsite",
   "dependencies": {
     "@material-ui/core": "^4.12.4",
     "@testing-library/jest-dom": "^5.14.1",
