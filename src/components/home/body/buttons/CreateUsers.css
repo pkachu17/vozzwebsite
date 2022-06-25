@@ -1,0 +1,22 @@
+.field-users{
+    display: flex;
+    flex-direction: row;
+    padding-left: 5%;
+    padding-right: 5%;
+}
+.user__container{
+    width: 75%;
+}
+.usersearch__container{
+    float: right;
+    width: 25%;
+    position: relative;
+    float: right;
+}
+.list-user{
+    padding-left: 5%;
+    padding-right: 5%;
+    overflow-y: scroll;
+    height: 70vh;
+    scroll-behavior: smooth;
+}

@@ -1,0 +1,19 @@
+*{
+    margin: 0%;
+    padding: 0%;
+}
+
+.screens__container{
+    padding-left: 5%;
+    padding-right: 5%;
+}
+
+.list-screen{
+    padding-left: 5%;
+    padding-right: 5%;
+    scroll-behavior: smooth;
+}
+
+.login__textBox{
+    margin-right: 1%;
+}

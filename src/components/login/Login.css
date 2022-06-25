@@ -1,0 +1,95 @@
+.login__container {
+  text-align: center;
+}
+
+.Login-logo {
+  height: 40vmin;
+  pointer-events: none;
+}
+
+.Login-header {
+  background-color: #4371ce; /*#4371ce*/
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.Login-link {
+  color: #61dafb;
+}
+@keyframes Login-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.login {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.login__container {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  background-color: #dcdcdc;
+  padding: 30px;
+}
+
+.login__textBox {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.login__btn {
+  padding: 10px;
+  font-size: 18px;
+  margin-bottom: 10px;
+  border: none;
+  color: white;
+  background-color: #4caf50;
+}
+
+.login__google {
+  background-color: #4285f4;
+}
+
+.login div {
+  margin-top: 7px;
+}
+
+.navbar{
+  background-image: linear-gradient(to right, #4285f4, #4285f4);
+  box-shadow: 5px 10px 8px #88888845;
+}
+
+.footer-brand{
+  height:20px;
+  color: aliceblue;
+  text-align: center;
+  text-decoration: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.navbar-brand{
+  color: white !important;
+  font-weight: bolder;
+}
+.footer{
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  justify-content: center;
+  width: 100%;
+}

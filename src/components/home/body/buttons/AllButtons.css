@@ -1,0 +1,43 @@
+.AllButtons-area{
+    padding-top: 3vh;
+    padding-bottom: 3vh;
+    height: 80vh;
+    overflow-y: scroll;
+    padding-left: 5%;
+    padding-right: 5%;
+    /* background-color: aqua; */
+}
+
+.color-preview{
+    width: 100%;
+    height: 5vh;
+    padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    border-radius: 2px;
+    background-color: rgb(242, 242, 242);
+}
+
+.button-image{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+#container{ 
+    width:250px;
+    height:180px;
+    align-items: center;  
+    flex-direction: column;
+    margin-left: auto;
+    margin-right: auto;
+}
+#container1{ 
+    align-items: center; 
+    flex-direction: column;
+}

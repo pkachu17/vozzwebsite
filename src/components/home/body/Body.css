@@ -1,0 +1,13 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+.body{
+    width: 100%;
+    height: 100%;
+    /* background-color: rgb(87, 102, 97); */
+    /* background-image: linear-gradient(to right, rgb(224, 224, 224), rgb(255, 255, 255)); */
+    /* background-image: linear-gradient( rgb(224, 224, 224), rgb(255, 255, 255)); This was last implemented*/
+    background-color: rgb(236, 236, 236);
+    overflow-y: scroll;
+}

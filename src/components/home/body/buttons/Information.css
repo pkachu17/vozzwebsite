@@ -1,0 +1,24 @@
+.paragraph {
+    padding-right: 5%;
+    padding-left: 5%;
+    text-align: justify;
+    font-size: large;
+  }
+
+.information {
+    overflow-y: scroll;
+}  
+.imagecss {
+    width: 50%;
+    height:50%;
+    border: solid 5px rgb(29, 134, 227);
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+h4 {
+    padding-right: 5%;
+    padding-left: 5%;
+    text-align: justify; 
+}

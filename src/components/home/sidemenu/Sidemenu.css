@@ -1,0 +1,49 @@
+*{
+    margin: 0px;
+    padding: 0px;
+}
+
+.sidemenu{
+    width: 100%;
+    height: 100%;
+    /* background-color: aliceblue; */
+    display: flex;
+    flex-direction: column;
+    
+}
+.sidemenumid{
+    padding-top: 5vh;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(231, 231, 231);
+    /* background-image: linear-gradient(to left, rgba(255,0,0,0), rgba(255,0,0,0)) !important; */
+    /* background-image: linear-gradient(to left, rgba(0, 0, 0, 0.084) ,rgba(143, 143, 143, 0.103),rgba(0, 0, 0, 0.084)) !important; */
+}
+#sidebuttons{
+    width: 250px;
+    height: 60px;
+    margin: 1%;
+    color: aliceblue;
+    background-color: rgb(29, 134, 227);
+    /* background-image: linear-gradient(to right, rgba(7, 174, 186, 0.904), rgba(29, 134, 227)); */
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-weight: bold;
+    border-radius: 8px;
+    border-style: none;
+    transition: 0.4s;
+    cursor: pointer;
+
+}
+#sidebuttons:hover {
+    background-color: #4CAF50; /* Green */
+    color: white;
+    /* font-weight: 500; */
+    box-shadow: 0 12px 16px 0 rgba(0,0,0,0.24), 0 17px 50px 0 rgba(0,0,0,0.19);
+}
+
+.sidemenumid ul Link{
+    all: none;
+}
