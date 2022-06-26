@@ -34,7 +34,7 @@ const AllButtons = () => {
     const { speak } = useSpeechSynthesis();
     const [filter, setFilter] = useState("");
 
-    const headervalue = 'All Buttons2';
+    const headervalue = 'All Buttons';
     const db = getFirestore(app);
     const [buttons, setButtons] = useState([]);
 

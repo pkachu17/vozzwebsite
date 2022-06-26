@@ -17,7 +17,7 @@
     align-items: center; 
     flex-direction: column;
     text-align: center;
-    text-shadow: 2px 2px #1e1e1e;
+    /* text-shadow: 2px 2px #1e1e1e; */
     border-radius: 8px;
     margin-top: 5%;
 }
@@ -41,7 +41,7 @@
 }
 #button{
     color: #ffffff;
-    text-shadow: 2px 2px 3px #0c0c0c;
+    /* text-shadow: 2px 2px 3px #0c0c0c; */
 }
 
 

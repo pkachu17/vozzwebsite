@@ -34,7 +34,7 @@
     align-items: center; 
     flex-direction: column;
     text-align: center;
-    text-shadow: 2px 2px #1e1e1e;
+    /* text-shadow: 2px 2px #1e1e1e; */
     border-radius: 8px;
     object-fit: contain;
 }
