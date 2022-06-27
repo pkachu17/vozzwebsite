@@ -14,6 +14,7 @@
 }
 .reg__art{
   height: 394px;
+  opacity: 0.95;
 }
 
 .register__container {
@@ -119,7 +120,7 @@ body{
     list-style: none;
     width: 20px;
     height: 20px;
-    background: rgba(139, 176, 244, 0.66);
+    background: rgba(252, 252, 252, 0.712);
     animation: animate 25s linear infinite;
     bottom: -150px;
     
