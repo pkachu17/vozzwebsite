@@ -57,7 +57,7 @@ const AllButtons = () => {
                 <div className="AllButtons-area">
                     <input type="search" className="form-control rounded w-25" value={filter} onChange={(e) => setFilter(e.target.value)} placeholder="Search..." />
                     <Grid container spacing={1} className={classes.grid}>
-                        {buttons.filter(button => button.name.includes(`${filter}`)).map((val, id) => {
+                        {buttons.filter(button => button.name.toLowerCase().includes(`${filter}`.toLowerCase())).map((val, id) => {
                             return (<Grid item xs={6} md={3}>
                                 <CardButton val={val} />
                             </Grid>
