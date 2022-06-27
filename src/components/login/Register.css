@@ -9,6 +9,8 @@
 .registertab{
   display: flex;
   flex-direction: column;
+  justify-content: center;
+  align-items: center;
   height: 400px;
   z-index: 9999;
 }
