@@ -3,6 +3,7 @@ import '../../../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { Link, useNavigate } from "react-router-dom";
 import { auth, logInWithEmailAndPassword, signInWithGoogle } from "./firebase";
 import { useAuthState } from "react-firebase-hooks/auth";
+import Brandgif from "./Vozzz.gif";
 import "./Login.css";
 
 
@@ -22,56 +23,73 @@ function Login() {
 
   return (
     <div className="App">
-        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-          <div className="container">
-            <Link className="navbar-brand" to={'/sign-in'}>
-              Vozzz
-            </Link>
-          </div>
-        </nav>
-    
-    <div className="login">
-      
-      <div className="login__container">
-        <input
-          type="text"
-          className="login__textBox"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
-        />
-        <input
-          type="password"
-          className="login__textBox"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button
-          className="login__btn"
-          onClick={() => logInWithEmailAndPassword(email, password)}
-        >
-          Login
-        </button>
-        <button className="login__btn login__google" onClick={signInWithGoogle}>
-          Login with Google
-        </button>
-        <div>
-          <Link to="/reset">Forgot Password</Link>
+      <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        <div className="container">
+          <Link className="navbar-brand" to={'/sign-in'}>
+            Vozzz
+          </Link>
         </div>
-        <div>
-          Don't have an account? <Link to="/register">Register</Link> now.
+      </nav> */}
+
+      <div className="login">
+
+        <div className="login__art">
+          <img className="login__art" src={Brandgif}></img>
+        </div>
+
+        <div className="login__container">
+          <input
+            type="text"
+            className="login__textBox"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="E-mail Address"
+          />
+          <input
+            type="password"
+            className="login__textBox"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <button
+            className="login__btn"
+            onClick={() => logInWithEmailAndPassword(email, password)}
+          >
+            Login
+          </button>
+          <button className="login__btn login__google" onClick={signInWithGoogle}>
+            Login with Google
+          </button>
+          <div>
+            <Link to="/reset">Forgot Password</Link>
+          </div>
+          <div>
+            Don't have an account? <Link to="/register">Register</Link> now.
+          </div>
         </div>
       </div>
-    </div>
-    <nav className="navbar navbar-expand-lg navbar-light fixed-bottom">
-          <div className="footer">
-            <div className="footer-brand" to={'/sign-in'}>
-              Copyrighted by Team Alpha (CSE 611)
-            </div>
+
+      <nav className="navbar navbar-expand-lg navbar-light fixed-bottom">
+        <div className="footer">
+          <div className="footer-brand" to={'/sign-in'}>
+            Copyrighted by Team Alpha (CSE 611)
           </div>
-    </nav>
-  </div>
+        </div>
+      </nav>
+    </div>
   );
 }
 

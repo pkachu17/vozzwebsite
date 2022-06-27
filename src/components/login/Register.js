@@ -6,6 +6,7 @@ import {
   registerWithEmailAndPassword,
   signInWithGoogle,
 } from "./firebase";
+import Brandgif from "./Vozzz.gif";
 import "./Register.css";
 
 function Register() {
@@ -27,49 +28,74 @@ function Register() {
 
   return (
     <div className="register">
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-          <div className="container">
-            <Link className="navbar-brand" to={'/sign-in'}>
-              Vozzz
-            </Link>
-          </div>
-        </nav>
-      <div className="register__container">
-        <input
-          type="text"
-          className="register__textBox"
-          value={name}
-          onChange={(e) => setName(e.target.value)}
-          placeholder="Full Name"
-        />
-        <input
-          type="text"
-          className="register__textBox"
-          value={email}
-          onChange={(e) => setEmail(e.target.value)}
-          placeholder="E-mail Address"
-        />
-        <input
-          type="password"
-          className="register__textBox"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-          placeholder="Password"
-        />
-        <button className="register__btn" onClick={register}>
-          Register
-        </button>
-        <button
-          className="register__btn register__google"
-          onClick={signInWithGoogle}
-        >
-          Register with Google
-        </button>
+    <ul class="circles">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+      {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+        <div className="container">
+          <Link className="navbar-brand" to={'/sign-in'}>
+            Vozzz
+          </Link>
+        </div>
+      </nav> */}
+      <div className="registertab">
+        <div className="reg__art">
+          <img className="reg__art" src={Brandgif}></img>
+        </div>
+        <div className="register__container">
 
-        <div>
-          Already have an account? <Link to="/">Login</Link> now.
+          <input
+            type="text"
+            className="register__textBox"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            placeholder="Full Name"
+          />
+          <input
+            type="text"
+            className="register__textBox"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+            placeholder="E-mail Address"
+          />
+          <input
+            type="password"
+            className="register__textBox"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+            placeholder="Password"
+          />
+          <button className="register__btn" onClick={register}>
+            Register
+          </button>
+          <button
+            className="register__btn register__google"
+            onClick={signInWithGoogle}
+          >
+            Register with Google
+          </button>
+
+          <div>
+            Already have an account? <Link to="/">Login</Link> now.
+          </div>
         </div>
       </div>
+      <nav className="navbar navbar-expand-lg navbar-light fixed-bottom">
+        <div className="footer">
+          <div className="footer-brand" to={'/sign-in'}>
+            Copyrighted by Team Alpha (CSE 611)
+          </div>
+        </div>
+      </nav>
     </div>
   );
 }
