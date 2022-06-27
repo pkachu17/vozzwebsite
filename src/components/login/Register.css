@@ -8,12 +8,12 @@
 }
 .registertab{
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   height: 400px;
   z-index: 9999;
 }
 .reg__art{
-  height: 394px;
+  width: 325px;
   opacity: 0.95;
 }
 
@@ -21,7 +21,7 @@
   display: flex;
   flex-direction: column;
   text-align: center;
-  background-color: #c9e4edbf;
+  background-color: #c9e4ed57;
   padding: 30px;
 }
 
@@ -68,6 +68,8 @@
   justify-content: center;
   width: 100%;
 }
+
+
 
 
 @import url('https://fonts.googleapis.com/css?family=Exo:400,700');
@@ -251,7 +253,7 @@ body{
 
 }
 
-.app {
+.register {
 	/* background: linear-gradient(-45deg, #ee7752, #e73c7e, #23a6d5, #23d5ab); */
   background: linear-gradient(-45deg, #23a6d5, #23bad5, #23a6d5, #23d5ab);
 	background-size: 400% 400%;

@@ -129,7 +129,7 @@ const CreateButtons = () => {
                         </div>
                         <div className="submission">
                             <button id="reset" className='menu-btn' type="button" onClick={() => reset()}>Reset</button>
-                            <button className='menu-btn' type="button" onClick={() => AddButtons(value, url, color)}>Submit</button>
+                            <button className='menu-btn' type="button" onClick={() => AddButtons(value.replaceAll(/\s/g,''), url, color)}>Submit</button>
                         </div>
                     </div>
                 </div>

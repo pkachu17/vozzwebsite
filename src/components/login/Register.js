@@ -85,17 +85,18 @@ function Register() {
           </button>
 
           <div>
-            Already have an account? <Link to="/">Login</Link> now.
+            Already have an account? <Link to="/">Login</Link> now.<br/>
+            <p className="copyrights">Copyrighted by Team Alpha <br/>(CSE 611)</p>
           </div>
         </div>
       </div>
-      <nav className="navbar navbar-expand-lg navbar-light fixed-bottom">
+      {/* <nav className="navbar navbar-expand-lg navbar-light fixed-bottom">
         <div className="footer">
           <div className="footer-brand" to={'/sign-in'}>
             Copyrighted by Team Alpha (CSE 611)
           </div>
         </div>
-      </nav>
+      </nav> */}
     </div>
   );
 }

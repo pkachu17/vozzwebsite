@@ -123,7 +123,7 @@ const CreateScreens = () => {
                         <option value="4*5">4*5</option>
                         <option value="4*6">4*6</option>
                     </select>
-                    <button id="sUserInput" className="btn btn-success w-15" onClick={() => addScreens(sname, gridSize)}>
+                    <button id="sUserInput" className="btn btn-success w-15" onClick={() => addScreens(sname.replaceAll(/\s/g,''), gridSize)}>
                         Add Screen
                     </button>
                 </div>
