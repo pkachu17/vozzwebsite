@@ -22,7 +22,7 @@ const CardButton = ({ val }) => {
                 }
             }
             if (flag == 2) {
-                alert("Buttons is currently being used in Screen!");
+                alert("Button is currently being used in Screen!");
             } else {
                 await deleteDoc(doc(db, "buttons", val.name)).then(alert("Button Deleted!"));
             }

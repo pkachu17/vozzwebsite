@@ -33,22 +33,22 @@ function Dashboard() {
 
   return (
     <div className="dashboard">
-    <div className="header">
-      <nav className="navbar navbar-expand-lg navbar-light fixed-top">
+      <div className="header">
+        <nav className="navbar navbar-expand-lg navbar-light fixed-top">
           <div className="container">
             <div className="navbar-brand" to={'/sign-in'}>Vozzz</div>
-              <div className="dashboard__container">
-                <div className="userid"><h6>{user?.email}</h6></div>
-                <button className="logout-button" type="text" onClick={logout}>Logout</button>
-              </div>
+            <div className="dashboard__container">
+              <div className="userid"><h6>{user?.email}</h6></div>
+              <button className="logout-button" type="text" onClick={logout}>Logout</button>
+            </div>
           </div>
         </nav>
       </div>
       <div className="body-container">
-        <Masterwindow/>
+        <Masterwindow />
       </div>
       <div className="footer-dashboard">
-              <div className="foot"> <h4>Copyrighted by Team Alpha (CSE 611)</h4></div>
+        <div className="foot"> <h6>Copyrighted by Team Alpha (CSE 611)</h6></div>
       </div>
     </div>
   );

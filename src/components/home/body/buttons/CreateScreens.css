@@ -6,14 +6,41 @@
 .screens__container{
     padding-left: 5%;
     padding-right: 5%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    margin-top: 0%;
+    margin-bottom: 2%;
+}
+
+.screenContainerLeft{
+    width: 60%;
+    display: flex;
+    flex-direction: row;
+}
+.screenContainerRight{
+    width: 40%;
+    display: flex;
+    flex-direction:row;
+    padding-left: 15%;
+}
+
+#sUserInput{
+    margin-right: 2%;
 }
 
 .list-screen{
     padding-left: 5%;
     padding-right: 5%;
-    scroll-behavior: smooth;
+    height: 70vh;
+    overflow-y: scroll;
 }
 
+#listScreen{
+    position: sticky;
+    top: 0;
+    background-color: rgba(245, 245, 245, 0.945);
+}
 .login__textBox{
     margin-right: 1%;
 }

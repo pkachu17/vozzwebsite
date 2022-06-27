@@ -10,7 +10,7 @@ function AboutUs() {
           </div>
           <p>VOZ is a mobile application which is android supported.The therapist uses a website and will have access to add or edit buttons and folders. The user/child who uses the app will be able to register themselves to the application and avail the buttons included by their speech therapist. On button click, the text is converted to a voice note, thus facilitating the app users with better communication.</p>
           <div className="just-center">
-            <h2><p><u><b>Detailed Description</b></u></p></h2>
+            <h2><p><u><b>Description</b></u></p></h2>
           </div>
           <p>Children and adults with speech impairments have hard time communicating properly.These disorders can cause frustration and embarrassment to the person suffering from them. This mobile application intends to support such people. Speech therapists add customizable buttons unique to every child using the “VOZ” website.They can add/edit  buttons to multiple folders. Once the user opens the mobile application on their tablet and clicks the buttons the voice notes are generated to help them with fluent and easy conversation. </p>
           <div className="just-center">

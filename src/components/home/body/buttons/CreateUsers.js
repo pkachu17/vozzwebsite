@@ -14,10 +14,7 @@ const CreateUsers = () => {
     const headervalue = 'Create Users';
     const [uname, setUname] = useState("");
     const [uid, setUid] = useState("");
-    const [screenId, setScreenId] = useState("");
-    const [screens, setScreens] = useState([])
-    const [search, setSearch] = useState();
-
+    const [search, setSearch] = useState("");
     const [students, setstudents] = useState([]);
 
     const listUsers = async () => {
@@ -25,6 +22,7 @@ const CreateUsers = () => {
         onSnapshot(collection(db, "students"), (snapshot) => {
             setstudents(snapshot.docs.map(doc => doc.data()));
             console.log(snapshot.docs.map(doc => doc.data()))
+            console.log(students);
         });
     }
 
@@ -39,81 +37,61 @@ const CreateUsers = () => {
         }
     };
 
-    const searchUser=()=>{};
-
     useEffect(() => {
         listUsers();
-        listScreens();
     }, []);
-    const listScreens = async () => {
-
-        onSnapshot(collection(db, "screens"), (snapshot) => {
-            setScreens(snapshot.docs.map(doc => doc.data()));
-            console.log(snapshot.docs.map(doc => doc.data()))
-        });
-    }
 
     return (
         <Fragment>
-        <div className="CreateUsers">
-            <Header text={headervalue} />
+            <div className="CreateUsers">
+                <Header text={headervalue} />
 
-            <div className="field-users">
-                <div className="user__container">
-                    <input type="text" className="login__textBox" value={uname} onChange={(e) => setUname(e.target.value)} placeholder="User Name" />
-                    <input type="text" className="login__textBox" value={uid} onChange={(e) => setUid(e.target.value)} placeholder="User id" />
-                    <button className="login__btn" onClick={() => AddUsers(uname, uid)}>
-                        Add User
-                    </button>
+                <div className="field-users">
+                    <div className="user__container">
+                        <div className="userContainerLeft">
+                            <input id="cUserInput" type="text" className="form-control rounded w-25" value={uname} onChange={(e) => setUname(e.target.value)} placeholder="User Name" />
+                            <input id="cUserInput" type="text" className="form-control rounded w-25" value={uid} onChange={(e) => setUid(e.target.value)} placeholder="User id" />
+                            <button id="cUserInput" className="btn btn-success w-15" onClick={() => AddUsers(uname, uid)}>
+                                Add User
+                            </button>
+                        </div>
+                        <div className="userContainerRight">
+                            <input type="search" className="form-control rounded" value={search} onChange={(e) => setSearch(e.target.value)} placeholder="Search..." />
+                        </div>
+                    </div>
+                </div>
+                <div className="list-user">
+                    <table className="table mt-0 text-center">
+                        <thead id="listUsers">
+                            <tr>
+                                <th>Student's Name</th>
+                                <th>Student's ID</th>
+                                <th>Screen 1</th>
+                                <th>Screen 2</th>
+                                <th>Screen 3</th>
+                                <th>Edit</th>
+                                <th>Delete</th>
+                            </tr>
+                        </thead>
+                        {students.filter(button => button.sname.toLowerCase().includes(`${search}`.toLowerCase())).map((val, id) => {
+                            return (
+                                <tbody>
+                                    <tr>
+                                        <td>{val.sname}</td>
+                                        <td>{val.sid}</td>
+                                        <td>{val.screen1}</td>
+                                        <td>{val.screen2}</td>
+                                        <td>{val.screen3}</td>
+                                        <td><EditStudentScreens val={val} /></td>
+                                        <td><button className="btn btn-danger" onClick={() => deleteUser(val.sid)}>Delete User</button></td>
+                                    </tr>
+                                </tbody>
+                            );
+
+                        })}
+                    </table>
                 </div>
             </div>
-            <div className="list-user">
-                <table className="table mt-0 text-center">
-                    <thead>
-                        <tr>
-                            <th>Student's Name</th>
-                            <th>Student's ID</th>
-                            <th>Screen 1</th>
-                            <th>Screen 2</th>
-                            <th>Screen 3</th>
-                            <th>Edit</th>
-                            <th>Delete</th>
-                        </tr>
-                    </thead>
-                    {students.map((val, id) => {
-                        return (
-                            <tbody>
-                                <tr>
-                                    <td>{val.sname}</td>
-                                    <td>{val.sid}</td>
-                                    <td>
-                                        <div className="form-group dropdn">
-                                            <h4>{val.screen1}</h4>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="form-group dropdn">
-                                                <h4>{val.screen2}</h4>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <div className="form-group dropdn">
-                                            <h4>{val.screen3}</h4>
-                                        </div>
-                                    </td>
-                                    <td>
-                                        <EditStudentScreens val={val}/>
-                                    </td>
-
-                                    <td><button className="btn btn-danger" onClick={() => deleteUser(val.sid)}>Delete User</button></td>
-                                </tr>
-                            </tbody>
-                        );
-
-                    })}
-                </table>
-            </div>
-        </div>
         </Fragment>
     );
 }

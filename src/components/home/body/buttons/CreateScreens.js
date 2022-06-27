@@ -15,26 +15,29 @@ const CreateScreens = () => {
     const [sname, setSname] = useState("");
     const [screens, setScreens] = useState([]);
     const [gridSize, setGridSize] = useState("");
+    const [screenSearch, setScreenSearch] = useState("");
 
     const listScreens = async () => {
         onSnapshot(collection(db, "screens"), (snapshot) => {
-            console.log(snapshot.docs.map(doc=>doc.data()));
-            setScreens(snapshot.docs.map(doc => doc.data()));            
+            console.log(snapshot.docs.map(doc => doc.data()));
+            setScreens(snapshot.docs.map(doc => doc.data()));
             //console.log(snapshot.docs.map(doc => doc.data()))
         });
     }
-    const addScreens = async (sname, gridSize) => {
+    const addScreens = async (sname = null, gridSize = null) => {
         try {
+            if (sname == null) { alert("Please enter Screen name"); }
+            if (gridSize == null) { alert("Please select Grid Size"); }
             await setDoc(doc(db, "screens", sname), {
                 sname: sname,
-                pname: "preview"+sname,
+                pname: "preview" + sname,
                 gridSize: gridSize,
                 r: gridSize.charAt(0),
                 c: gridSize.charAt(2),
                 buttons: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
-                buttonsSelected:Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
-                buttonsImage:Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
-                buttonsColor:Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
+                buttonsSelected: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
+                buttonsImage: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
+                buttonsColor: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
 
             });
         } catch (e) {
@@ -108,24 +111,29 @@ const CreateScreens = () => {
         <div className="CreateScreens">
             <Header text={headervalue} />
             <div className="screens__container">
-                <input type="text" className="login__textBox mt-1" value={sname} onChange={(e) => setSname(e.target.value)} placeholder="Screen Name" />
-                <select className="login__textBox  mt-1" name="screen2" value={gridSize} onChange={e => setGridSize(e.target.value)}>
-                    <option disabled selected value>Select Grid Size</option>
-                    <option selected value="2*2">2*2</option>
-                    <option selected value="2*3">2*3</option>
-                    <option selected value="3*4">3*4</option>
-                    <option selected value="3*5">3*5</option>
-                    <option selected value="4*4">4*4</option>
-                    <option selected value="4*5">4*5</option>
-                    <option selected value="4*6">4*6</option>
-                </select>
-                <button className="login__btn" onClick={() => addScreens(sname, gridSize)}>
-                    Add Screen
-                </button>
+                <div className="screenContainerLeft">
+                    <input id="sUserInput" type="text" className="form-control rounded w-25" value={sname} onChange={(e) => setSname(e.target.value)} placeholder="Screen Name" />
+                    <select id="sUserInput" className="form-control rounded w-25" name="screen2" value={gridSize} onChange={e => setGridSize(e.target.value)}>
+                        <option>Select Grid Size</option>
+                        <option value="2*2">2*2</option>
+                        <option value="2*3">2*3</option>
+                        <option value="3*4">3*4</option>
+                        <option value="3*5">3*5</option>
+                        <option value="4*4">4*4</option>
+                        <option value="4*5">4*5</option>
+                        <option value="4*6">4*6</option>
+                    </select>
+                    <button id="sUserInput" className="btn btn-success w-15" onClick={() => addScreens(sname, gridSize)}>
+                        Add Screen
+                    </button>
+                </div>
+                <div className="screenContainerRight">
+                    <input type="search" className="form-control rounded" value={screenSearch} onChange={(e) => setScreenSearch(e.target.value)} placeholder="Search..." />
+                </div>
             </div>
-            <div id="list" className="list-screen">
-                <table className="table mt-0 text-center">
-                    <thead>
+            <div  className="list-screen">
+                <table  className="table mt-0 text-center">
+                    <thead id="listScreen">
                         <tr>
                             <th>Screen's Name</th>
                             <th>Grid Size</th>
@@ -134,7 +142,7 @@ const CreateScreens = () => {
                             <th>Delete</th>
                         </tr>
                     </thead>
-                    {screens.map((val, id) => {
+                    {screens.filter(button => button.sname.toLowerCase().includes(`${screenSearch}`.toLowerCase())).map((val, id) => {
                         return (
                             <tbody>
                                 <tr>
