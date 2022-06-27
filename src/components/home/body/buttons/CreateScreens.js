@@ -39,7 +39,9 @@ const CreateScreens = () => {
                 buttonsImage: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
                 buttonsColor: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
 
-            });
+            }).then(alert("Screen added successfully!"));;
+
+            reset();
         } catch (e) {
             console.error("Error adding document: ", e);
         }
@@ -101,6 +103,11 @@ const CreateScreens = () => {
         } catch (e) {
             console.error("Error deleting document: ", e);
         }
+    };
+
+    const reset=()=>{
+        setSname("");
+        setGridSize("");
     };
 
     useEffect(() => {
