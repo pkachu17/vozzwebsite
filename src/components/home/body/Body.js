@@ -15,7 +15,7 @@ import AboutUs from "./buttons/AboutUs";
 
 const Body=()=>{
     return(
-        <div className="body">
+        <div className="bodyContainer">
                 <Routes>
                     <Route exact path="/" element={<AllButtons/>} />
                     <Route exact path="/AllButtons" element={<AllButtons/>} />
