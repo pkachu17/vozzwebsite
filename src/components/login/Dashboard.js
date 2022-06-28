@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from "react-firebase-hooks/auth";
 import { auth, db, logout } from "./firebase";
@@ -7,10 +7,55 @@ import AdminUserImg from "./admin-user-icon.jpg"
 import Body from "../home/body/Body";
 import "./Dashboard.css";
 
+const NAVS = {
+  ALL_BUTTONS: {
+    title: "AllButtons",
+    display: "All Buttons",
+    icon: "fas fa-grip-horizontal fa-fw me-3"
+  },
+  CREATE_BUTTONS: {
+    title: "CreateButtons",
+    display: "Create Buttons",
+    icon: "fas fa-stop fa-fw me-3"
+  },
+  CREATE_USERS: {
+    title: "CreateUsers",
+    display: "Create Users",
+    icon: "fas fa-user-alt fa-fw me-3"
+  },
+  CREATE_SCREENS: {
+    title: "CreateScreens",
+    display: "Create Screens",
+    icon: "fas fa-th-large fa-fw me-3"
+  },
+  ANALYTICS: {
+    title: "",
+    display: "Anaytics",
+    icon: "fas fa-chart-line fa-fw me-3"
+  }, 
+  INFORMATION: {
+    title: "Information",
+    display: "Information",
+    icon: "fas fa-info-circle fa-fw me-3"
+  }, 
+  GET_APK: {
+    title: "",
+    display: "Get APK",
+    icon: "fas fa-cloud-download-alt fa-fw me-3"
+  },
+  ABOUT_US: {
+    title: "AboutUs",
+    display: "About Us",
+    icon: "fas fa-users fa-fw me-3"
+  }
+}
+
 function Dashboard() {
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
+  const sidebarRef = useRef();
+  const currentPage = window.location.pathname?.split("/")?.pop();
 
   const fetchUserName = async () => {
     try {
@@ -32,20 +77,19 @@ function Dashboard() {
     fetchUserName();
   }, [user, loading]);
 
+  const removeShowClass = () => sidebarRef?.current?.classList?.remove('show');
+
   return (
     <div className="dashboard">
       <header>
-        <nav id="sidebarMenu" class="collapse d-lg-block sidebar collapse bg-white">
+        <nav id="sidebarMenu" ref={sidebarRef} class={`collapse d-lg-block sidebar collapse bg-white`}>
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
-              <Link to="AllButtons" class="list-group-item list-group-item-action py-2 ripple" aria-current="true"><i class="fas fa-grip-horizontal fa-fw me-3"></i><span>All Buttons</span></Link>
-              <Link to="CreateButtons" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-stop fa-fw me-3"></i><span>Create Buttons</span></Link>
-              <Link to="CreateUsers" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-user-alt fa-fw me-3"></i><span>Create User</span></Link>
-              <Link to="CreateScreens" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-th-large fa-fw me-3"></i><span>Create Screens</span></Link>
-              <Link to="" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-chart-line fa-fw me-3"></i><span>Analytics</span></Link>
-              <Link to="Information" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-info-circle fa-fw me-3"></i><span>Information</span></Link>
-              <Link to="Information" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-cloud-download-alt fa-fw me-3"></i><span>Get Apk</span></Link>
-              <Link to="AboutUs" class="list-group-item list-group-item-action py-2 ripple"><i class="fas fa-users fa-fw me-3"></i><span>About Us</span></Link>
+              {
+                Object.values(NAVS)?.map(({title, display, icon}) => (
+                  <Link to={title} key={title} class={`list-group-item list-group-item-action py-2 ${currentPage === title? "active": ""}`} aria-current="true" onClick={removeShowClass}><i class={icon}></i><span>{display}</span></Link>
+                ))
+              }
             </div>
           </div>
         </nav>
@@ -54,7 +98,11 @@ function Dashboard() {
           {/* Container wrapper */}
           <div class="container-fluid">
             {/* Toggle button */}
-            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse" data-mdb-target="#sidebarMenu" aria-controls="sidebarMenu" aria-expanded="false" aria-label="Toggle navigation" >
+            <button class="navbar-toggler" type="button" data-mdb-toggle="collapse"
+              data-mdb-target="#sidebarMenu"
+              aria-controls="sidebarMenu"
+              aria-expanded="false"
+              aria-label="Toggle navigation">
               <i class="fas fa-bars"></i>
             </button>
 
