@@ -39,7 +39,7 @@ const CardButton = ({ val }) => {
             <div className="card-bottom">
                 <h4 className="buttontext">{val.name}</h4>
 
-                <i class="fas fa-trash" style={{ color: '#f54747', paddingRight: "10px" }} data-toggle="modal" data-target={`#id${val.name}`}></i>
+                <i class="fas fa-trash-alt" style={{ color: '#f54747', paddingRight: "10px" }} data-toggle="modal" data-target={`#id${val.name}`}></i>
 
                 <div class="modal fade" id={`id${val.name}`}>
                     <div class="modal-dialog modal-confirm">
