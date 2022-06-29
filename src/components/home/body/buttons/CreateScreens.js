@@ -119,7 +119,7 @@ const CreateScreens = () => {
             <Header text={headervalue} />
             <div className="screens__container">
                 <div className="screenContainerLeft">
-                    <input id="sUserInput" type="text" className="form-control rounded w-25" value={sname} onChange={(e) => setSname(e.target.value)} placeholder="Screen Name" />
+                    <input id="sUserInput" type="text" className="form-control rounded w-25" value={sname} maxLength={12} onChange={(e) => setSname(e.target.value)} placeholder="Screen Name" />
                     <select id="sUserInput" className="form-control rounded w-25" name="screen2" value={gridSize} onChange={e => setGridSize(e.target.value)}>
                         <option>Select Grid Size</option>
                         <option value="2*2">2*2</option>

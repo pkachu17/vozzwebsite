@@ -29,8 +29,8 @@ const NAVS = {
     icon: "fas fa-th-large fa-fw me-3"
   },
   ANALYTICS: {
-    title: "",
-    display: "Anaytics",
+    title: "ButtonHistory",
+    display: "ButtonHistory",
     icon: "fas fa-chart-line fa-fw me-3"
   }, 
   INFORMATION: {

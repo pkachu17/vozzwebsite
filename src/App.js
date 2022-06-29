@@ -16,6 +16,7 @@ import CreateScreens from "./components/home/body/buttons/CreateScreens";
 import Settings from "./components/home/body/buttons/Settings";
 import Information from "./components/home/body/buttons/Information";
 import AboutUs from "./components/home/body/buttons/AboutUs";
+import ButtonHistory from "./components/home/body/buttons/ButtonHistory";
 
 
 function App() {
@@ -35,6 +36,7 @@ function App() {
             <Route exact path="CreateUsers" element={<CreateUsers/>} />
             <Route exact path="AllScreens" element={<AllScreens/>} />
             <Route exact path="CreateScreens" element={<CreateScreens/>} />
+            <Route exact path="ButtonHistory" element={<ButtonHistory/>} />
             <Route exact path="Settings" element={<Settings/>} />
             <Route exact path="Information" element={<Information/>} />
             <Route exact path="AboutUs" element={<AboutUs/>} />

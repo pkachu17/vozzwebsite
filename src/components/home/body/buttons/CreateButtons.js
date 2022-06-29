@@ -121,7 +121,7 @@ const CreateButtons = () => {
                 </div>
                 <div className="CreateButtons-selection-area">
                     <div className="selection-menu">
-                        <textarea placeholder="Enter Text" value={value} onChange={(event) => setValue(event.target.value)} />
+                        <textarea placeholder="Enter Text" value={value} maxLength={12} onChange={(event) => setValue(event.target.value)} />
                         <button className='menu-btn' onClick={() => speak({ text: value })}>play</button>
                         <div className="color-picker">
                             Select Button color
