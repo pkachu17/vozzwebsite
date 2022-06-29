@@ -17,6 +17,7 @@ import Settings from "./components/home/body/buttons/Settings";
 import Information from "./components/home/body/buttons/Information";
 import AboutUs from "./components/home/body/buttons/AboutUs";
 import ButtonHistory from "./components/home/body/buttons/ButtonHistory";
+import GetApk from "./components/home/body/buttons/GetApk";
 
 
 function App() {
@@ -39,6 +40,7 @@ function App() {
             <Route exact path="ButtonHistory" element={<ButtonHistory/>} />
             <Route exact path="Settings" element={<Settings/>} />
             <Route exact path="Information" element={<Information/>} />
+            <Route exact path="GetApk" element={<GetApk/>} />
             <Route exact path="AboutUs" element={<AboutUs/>} />
 
           </Route>

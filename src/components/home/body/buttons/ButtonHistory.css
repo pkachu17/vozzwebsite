@@ -98,6 +98,6 @@
     background-color: rgba(245, 245, 245, 0.945);
 	
 }
-#listScreen .tr .th{
+#listScreen tr th{
 	font-weight: bolder;
 }

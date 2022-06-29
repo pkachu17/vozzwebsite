@@ -5,8 +5,9 @@
     font-size: large;
   }
 
-.information {
+.Information {
     overflow-y: scroll;
+    height: 91vh;
 }  
 .imagecss {
     width: 50%;

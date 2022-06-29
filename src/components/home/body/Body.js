@@ -10,9 +10,9 @@ import CreateScreens from "./buttons/CreateScreens";
 import ButtonHistory from "./buttons/ButtonHistory";
 import Settings from "./buttons/Settings";
 import Information from "./buttons/Information";
-
-import "./Body.css"
+import GetApk from "./buttons/GetApk";
 import AboutUs from "./buttons/AboutUs";
+import "./Body.css"
 
 const Body=()=>{
     return(
@@ -28,8 +28,8 @@ const Body=()=>{
                     <Route exact path="/ButtonHistory" element={<ButtonHistory/>} />
                     <Route exact path="/Settings" element={<Settings/>} />
                     <Route exact path="/Information" element={<Information/>} />
+                    <Route exact path="/GetApk" element={<GetApk/>} />
                     <Route exact path="/AboutUs" element={<AboutUs/>} />
-
                 </Routes>
         </div>
     );

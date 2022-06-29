@@ -39,8 +39,8 @@ const NAVS = {
     icon: "fas fa-info-circle fa-fw me-3"
   }, 
   GET_APK: {
-    title: "",
-    display: "Get APK",
+    title: "GetApk",
+    display: "GetApk",
     icon: "fas fa-cloud-download-alt fa-fw me-3"
   },
   ABOUT_US: {
