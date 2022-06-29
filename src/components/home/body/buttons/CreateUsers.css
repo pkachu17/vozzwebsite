@@ -44,3 +44,6 @@
     top: 0;
     background-color: rgba(245, 245, 245, 0.945);
 }
+#listUsers tr th{
+    font-weight: bolder;
+}

@@ -25,7 +25,7 @@ const ButtonHistory = () =>{
 
             <div className="list-userss">
                 <table className="table mt-0 text-center">
-                    <thead>
+                    <thead id="listScreen">
                         <tr>
                             <th>Student's Name</th>
                             <th>Student's ID</th>

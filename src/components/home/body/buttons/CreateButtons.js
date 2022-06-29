@@ -122,14 +122,14 @@ const CreateButtons = () => {
                 <div className="CreateButtons-selection-area">
                     <div className="selection-menu">
                         <textarea placeholder="Enter Text" value={value} maxLength={12} onChange={(event) => setValue(event.target.value)} />
-                        <button className='menu-btn' onClick={() => speak({ text: value })}>play</button>
+                        <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onClick={() => speak({ text: value })}>Play</button>
                         <div className="color-picker">
                             Select Button color
                             <input type="color" id="colorPicker" onClick={(event) => setColor(event.target.value)}></input>
                         </div>
                         <div className="submission">
-                            <button id="reset" className='menu-btn' type="button" onClick={() => reset()}>Reset</button>
-                            <button className='menu-btn' type="button" onClick={() => AddButtons(value.replaceAll(/\s/g,''), url, color)}>Submit</button>
+                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onClick={() => reset()}>Reset</button>
+                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onClick={() => AddButtons(value.replaceAll(/\s/g, ''), url, color)}>Submit</button>
                         </div>
                     </div>
                 </div>

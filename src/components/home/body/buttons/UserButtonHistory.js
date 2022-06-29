@@ -29,19 +29,19 @@ const UserButtonHistory = ({ val }) => {
     }, []);
     return (
         <Fragment>
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target={`#id${val.sid}`}>
+            <button type="button" class="btn btn-success" data-toggle="modal" data-target={`#id${val.sid}`}>
                 View History
             </button>
-            <div class="modal" id={`id${val.sid}`}>
+            <div class="modal fade" id={`id${val.sid}`}>
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
-                            <h4 class="modal-title">All Buttons</h4>
+                            <h4 class="modal-title">Button Statistics</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-                        <div class="modal-body">
-                        <table class="fl-table">
-                        <thead>
+                        <div id="statModalBody" class="modal-body">
+                        <table class="table mt-0 text-center">
+                        <thead id="statModalTable">
                             <tr>
                                 <th>Button Name</th>
                                 <th>Count</th>

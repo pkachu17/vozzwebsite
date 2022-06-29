@@ -91,3 +91,13 @@
 	display: inline-block;
 	margin: 100px auto;
 }
+
+#listScreen{
+    position: sticky;
+    top: 0;
+    background-color: rgba(245, 245, 245, 0.945);
+	
+}
+#listScreen tr th{
+	font-weight: bolder;
+}
