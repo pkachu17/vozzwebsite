@@ -35,7 +35,7 @@ const EditStudentScreens = ({ val }) => {
     return (
         <Fragment>
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target={`#id${val.sid}`}>
-                Edit Screens
+                <i class="far fa-edit" style={{color: 'white'}}></i>
             </button>
 
             <div class="modal" id={`id${val.sid}`}>

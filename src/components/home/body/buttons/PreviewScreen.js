@@ -62,7 +62,7 @@ const PreviewScreen = ({ val }) => {
     return (
         <Fragment>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target={`#${val.pname}`}>
-                View
+                <i class="far fa-eye" style={{color: 'white'}}></i>
             </button>
 
             <div class="modal fade" id={`${val.pname}`}>

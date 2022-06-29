@@ -84,7 +84,7 @@ const EditScreenGrid = ({ val }) => {
 
     return (
         <Fragment>
-            <button type="button" class="btn btn-warning" data-toggle="modal" data-target={`#${val.sname}`}>Edit</button>
+            <button type="button" class="btn btn-warning" data-toggle="modal" data-target={`#${val.sname}`}><i class="far fa-edit" style={{color: 'white'}}></i></button>
 
             <div class="modal fade" id={`${val.sname}`}>
                 <div class="modal-dialog modal-xl">

@@ -83,7 +83,7 @@ const CreateUsers = () => {
                                         <td>{val.screen2}</td>
                                         <td>{val.screen3}</td>
                                         <td><EditStudentScreens val={val} /></td>
-                                        <td><button className="btn btn-danger" onClick={() => deleteUser(val.sid)}>Delete User</button></td>
+                                        <td><button className="btn btn-danger" onClick={() => deleteUser(val.sid)}><i class="fas fa-trash-alt" style={{color: 'white'}}></i></button></td>
                                     </tr>
                                 </tbody>
                             );

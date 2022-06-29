@@ -157,7 +157,7 @@ const CreateScreens = () => {
                                     <td>{val.gridSize}</td>
                                     <td><PreviewScreen val={val} /></td>
                                     <td><EditScreenGrid val={val} /></td>
-                                    <td><button className="btn btn-danger" onClick={() => deleteScreen(val.sname)}>Delete Screen</button></td>
+                                    <td><button className="btn btn-danger" onClick={() => deleteScreen(val.sname)}><i class="fas fa-trash-alt" style={{color: 'white'}}></i></button></td>
                                 </tr>
                             </tbody>
                         );
