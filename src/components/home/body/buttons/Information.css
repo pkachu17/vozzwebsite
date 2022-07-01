@@ -6,9 +6,12 @@
   }
 
 .Information {
-    overflow-y: scroll;
     height: 91vh;
-}  
+}
+.Info-area{
+    height: 90%;
+    overflow-y: scroll;
+}
 .imagecss {
     width: 50%;
     height:50%;
