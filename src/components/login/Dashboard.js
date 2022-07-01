@@ -135,10 +135,9 @@ function Dashboard() {
         </nav>
         {/* Navbar */}
       </header>
-        <main className="body">
-
+        <body className="body">
           <Body/>
-        </main>
+        </body>
     </div>
   );
 }
