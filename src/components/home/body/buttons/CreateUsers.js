@@ -83,7 +83,26 @@ const CreateUsers = () => {
                                         <td>{val.screen2}</td>
                                         <td>{val.screen3}</td>
                                         <td><EditStudentScreens val={val} /></td>
-                                        <td><button className="btn btn-danger" onClick={() => deleteUser(val.sid)}><i class="fas fa-trash-alt" style={{color: 'white'}}></i></button></td>
+                                        <td><button className="btn btn-danger" data-toggle="modal" data-target={`#id${val.sname}`}><i class="fas fa-trash-alt" style={{ color: 'white' }}></i></button></td>
+                                        <div class="modal fade" id={`id${val.sname}`}>
+                                            <div class="modal-dialog modal-confirm">
+                                                <div class="modal-content">
+                                                    <div class="modal-header flex-column md-center">
+                                                        <div class="icon-box">
+                                                            <i class="material-icons">&#xE5CD;</i>
+                                                        </div>
+                                                        <h4 class="modal-title w-100">Are you sure?</h4>
+                                                    </div>
+                                                    <div class="modal-body">
+                                                        <p class="text-decoration-none">Do you really want to delete User: <b>{val.sname}</b>? This process cannot be undone.</p>
+                                                    </div>
+                                                    <div class="modal-footer justify-content-center">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                        <button type="button" class="btn btn-danger" data-dismiss="modal" onClick={() => deleteUser(val.sid)}>Delete</button>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </tr>
                                 </tbody>
                             );

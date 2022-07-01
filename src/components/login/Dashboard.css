@@ -3,9 +3,23 @@
   padding: 0px;
 }
 
-.body {
+/* .body {
   width: 100vw;
   height: 100vh;
+  z-index: 1;
+} */
+/* body {
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+} */
+
+main{
+  height: 100vh !important;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
 }
 
 .sidebar {
@@ -21,7 +35,7 @@
 
 @media (max-width: 991.98px) {
   .sidebar {
-    width: 100%;
+    /* width: 100%; */
   }
 }
 .sidebar .active {
@@ -40,4 +54,11 @@
 
 .navbar-brand{
   padding-left: 3%;
+  font-family: 'PT Sans Caption', sans-serif;
+  font-family: 'Roboto', sans-serif;
+}
+
+.vozzz-brand{
+  
+  
 }
