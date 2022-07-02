@@ -121,7 +121,7 @@ const CreateButtons = () => {
                 </div>
                 <div className="CreateButtons-selection-area">
                     <div className="selection-menu">
-                        <textarea placeholder="Enter Text" value={value} maxLength={12} onChange={(event) => setValue(event.target.value)} />
+                        <textarea class="form-control" placeholder="Enter Text (required)" value={value} maxLength={12} onChange={(event) => setValue(event.target.value)} required="required" />
                         <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onClick={() => speak({ text: value })}>Play</button>
                         <div className="color-picker">
                             Select Button color
@@ -129,7 +129,7 @@ const CreateButtons = () => {
                         </div>
                         <div className="submission">
                             <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onClick={() => reset()}>Reset</button>
-                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onClick={() => AddButtons(value.replaceAll(/\s/g, ''), url, color)}>Submit</button>
+                            <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onClick={() => AddButtons(value.replaceAll(/\s/g, ''), url, color).then(reset())}>Submit</button>
                         </div>
                     </div>
                 </div>

@@ -30,7 +30,7 @@ const UserButtonHistory = ({ val }) => {
     return (
         <Fragment>
             <button type="button" class="btn btn-success" data-toggle="modal" data-target={`#id${val.sid}`}>
-                View History
+                <i class="far fa-eye" style={{color: 'white'}}></i>
             </button>
             <div class="modal fade" id={`id${val.sid}`}>
                 <div class="modal-dialog">
