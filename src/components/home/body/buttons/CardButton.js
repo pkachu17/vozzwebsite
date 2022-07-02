@@ -4,6 +4,7 @@ import { db } from "../../../login/firebase";
 import useSpeechSynthesis from "react-speech-kit/dist/useSpeechSynthesis";
 import "./CardButton.css";
 import CustomAlert from "./CustomAlert";
+import EditButton from "./EditButton";
 
 
 const CardButton = ({ val }) => {
@@ -38,8 +39,8 @@ const CardButton = ({ val }) => {
             </div>
             <div className="card-bottom">
                 <h4 className="buttontext">{val.name}</h4>
-
-                <i class="fas fa-trash-alt" style={{ color: '#f54747', paddingRight: "10px" }} data-toggle="modal" data-target={`#id${val.name}`}></i>
+                <EditButton val={val}/>
+                <i class="fas fa-trash-alt" style={{color: '#f54747', paddingRight:"10px"}} data-toggle="modal" data-target={`#id${val.name}`}></i>
 
                 <div class="modal fade" id={`id${val.name}`}>
                     <div class="modal-dialog modal-confirm">
