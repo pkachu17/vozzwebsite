@@ -15,6 +15,7 @@ import {
   query,
   getDocs,
   doc,
+  updateDoc,
   collection,
   where,
   deleteDoc,
@@ -52,43 +53,57 @@ const database = getDatabase(app);
 
 const googleProvider = new GoogleAuthProvider();
 
-const AddUsers = async (name,uid) => {
+const AddUsers = async (name, uid) => {
   try {
-  await setDoc(doc(db, "students",uid), {
-    sname: name,
-    sid: uid,
-    screen1:"",
-    screen2:"",
-    screen3:""
-  });
-  console.log("Document written with ID: ");
-} catch (e) {
-  console.error("Error adding document: ", e);}
+    await setDoc(doc(db, "students", uid), {
+      sname: name,
+      sid: uid,
+      screen1: "",
+      screen2: "",
+      screen3: ""
+    });
+    console.log("Document written with ID: ");
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
 }
 
-  
 
-const AddButtons = async (value,url,color) => {
+
+const AddButtons = async (value, url, color) => {
   console.log(value, url, color);
   try {
-        await setDoc(doc(db, "buttons", value), {
-        name: value,
-        image_url:url,
-        color:color
-      }).then((data) => {alert("Button Added");})
-      .catch((err) => {console.log('err', err);});
-} catch (e) {
-  console.error("Error adding document: ", e);}
+    await setDoc(doc(db, "buttons", value), {
+      name: value,
+      image_url: url,
+      color: color
+    }).then((data) => { alert("Button Added"); })
+      .catch((err) => { console.log('err', err); });
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
 }
 
 const deleteButtons = async (name) => {
   try {
-      await deleteDoc(doc(db, "buttons", name));   
-      console.log("Document deleted")   
+    await deleteDoc(doc(db, "buttons", name));
+    console.log("Document deleted")
   } catch (e) {
-    console.error("Error deleting document: ", e);}
-  };
+    console.error("Error deleting document: ", e);
+  }
+};
 
+const UpdateButton = async (value,url,color) => {
+  console.log(value, url, color);
+  try {
+    await updateDoc(doc(db, "buttons", value), {
+        name: value,
+        image_url:url,
+        color:color
+      });    
+} catch (e) {
+  console.error("Error adding document: ", e);}
+}
 
 
 const signInWithGoogle = async () => {
@@ -163,5 +178,6 @@ export {
   storage,
   AddUsers,
   AddButtons,
-  database
+  database,
+  UpdateButton
 };
