@@ -37,6 +37,11 @@ const CreateUsers = () => {
         }
     };
 
+    const resetUserFields =()=>{
+        setUname("");
+        setUid("");
+    };
+
     useEffect(() => {
         listUsers();
     }, []);
@@ -51,7 +56,7 @@ const CreateUsers = () => {
                         <div className="userContainerLeft">
                             <input id="cUserInput" type="text" className="form-control rounded w-25" value={uname} onChange={(e) => setUname(e.target.value)} placeholder="User Name" />
                             <input id="cUserInput" type="text" className="form-control rounded w-25" value={uid} onChange={(e) => setUid(e.target.value)} placeholder="User id" />
-                            <button id="cUserInput" className="btn btn-success w-15" onClick={() => AddUsers(uname, uid)}>
+                            <button id="cUserInput" className="btn btn-success w-15" onClick={() => AddUsers(uname, uid).then(resetUserFields())}>
                                 Add User
                             </button>
                         </div>

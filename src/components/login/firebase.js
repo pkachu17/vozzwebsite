@@ -55,13 +55,19 @@ const googleProvider = new GoogleAuthProvider();
 
 const AddUsers = async (name, uid) => {
   try {
-    await setDoc(doc(db, "students", uid), {
-      sname: name,
-      sid: uid,
-      screen1: "",
-      screen2: "",
-      screen3: ""
-    });
+    const userRef = query(collection(db, "students"), where("sid", "==",uid));
+    const result = await getDocs(userRef);
+    if (result.docs.length==0){
+      await setDoc(doc(db, "students", uid), {
+        sname: name,
+        sid: uid,
+        screen1: "",
+        screen2: "",
+        screen3: ""
+      });
+      alert("User added successfully.");
+    }
+    else alert("User ID already exists!"); 
     console.log("Document written with ID: ");
   } catch (e) {
     console.error("Error adding document: ", e);
@@ -71,14 +77,19 @@ const AddUsers = async (name, uid) => {
 
 
 const AddButtons = async (value, url, color) => {
-  console.log(value, url, color);
+
   try {
-    await setDoc(doc(db, "buttons", value), {
-      name: value,
-      image_url: url,
-      color: color
-    }).then((data) => { alert("Button Added"); })
-      .catch((err) => { console.log('err', err); });
+    const userRef = query(collection(db, "buttons"), where("name", "==", value));
+    const result = await getDocs(userRef);
+    if (result.docs.length == 0) {
+      await setDoc(doc(db, "buttons", value), {
+        name: value,
+        image_url: url,
+        color: color
+      }).then((data) => { alert("Button Added"); })
+        .catch((err) => { console.log('err', err); });
+    }
+    else alert("Button already exists!");
   } catch (e) {
     console.error("Error adding document: ", e);
   }
@@ -93,16 +104,17 @@ const deleteButtons = async (name) => {
   }
 };
 
-const UpdateButton = async (value,url,color) => {
+const UpdateButton = async (value, url, color) => {
   console.log(value, url, color);
   try {
     await updateDoc(doc(db, "buttons", value), {
-        name: value,
-        image_url:url,
-        color:color
-      });    
-} catch (e) {
-  console.error("Error adding document: ", e);}
+      name: value,
+      image_url: url,
+      color: color
+    });
+  } catch (e) {
+    console.error("Error adding document: ", e);
+  }
 }
 
 

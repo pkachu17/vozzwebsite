@@ -28,18 +28,22 @@ const CreateScreens = () => {
         try {
             if (sname == null) { alert("Please enter Screen name"); }
             if (gridSize == null) { alert("Please select Grid Size"); }
-            await setDoc(doc(db, "screens", sname), {
-                sname: sname,
-                pname: "preview" + sname,
-                gridSize: gridSize,
-                r: gridSize.charAt(0),
-                c: gridSize.charAt(2),
-                buttons: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
-                buttonsSelected: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
-                buttonsImage: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
-                buttonsColor: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
+            const userRef = query(collection(db, "screens"), where("sname", "==", sname));
+            const result = await getDocs(userRef);
+            if (result.docs.length == 0) {
+                await setDoc(doc(db, "screens", sname), {
+                    sname: sname,
+                    pname: "preview" + sname,
+                    gridSize: gridSize,
+                    r: gridSize.charAt(0),
+                    c: gridSize.charAt(2),
+                    buttons: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
+                    buttonsSelected: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
+                    buttonsImage: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
+                    buttonsColor: Array(parseInt(gridSize.charAt(0), 10) * parseInt(gridSize.charAt(2))).fill(""),
 
-            }).then(alert("Screen added successfully!"));;
+                }).then(alert("Screen added successfully!"));;
+            } else (alert("Screen name already exists!"));
 
             reset();
         } catch (e) {
@@ -98,7 +102,7 @@ const CreateScreens = () => {
             querySnapshot2.forEach((doc) => {
                 deleteUserScreen3(doc.id);
             });
-
+            alert("Screen deleted.");
 
         } catch (e) {
             console.error("Error deleting document: ", e);
@@ -168,7 +172,7 @@ const CreateScreens = () => {
                                                     <h4 class="modal-title w-100">Are you sure?</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-decoration-none">Do you really want to delete Screen: <b>{val.sname}</b>? This process cannot be undone.</p>
+                                                    <p class="text-decoration-none">Do you really want to delete Screen: <b>{val.sname}</b>? <br /><i class="fas fa-exclamation-triangle" style={{ color: 'red' }}></i>Screen might be assigned to User!</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-center">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
