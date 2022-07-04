@@ -32,12 +32,12 @@ const NAVS = {
     title: "ButtonHistory",
     display: "ButtonHistory",
     icon: "fas fa-chart-line fa-fw me-3"
-  }, 
+  },
   INFORMATION: {
     title: "Information",
     display: "Information",
     icon: "fas fa-info-circle fa-fw me-3"
-  }, 
+  },
   GET_APK: {
     title: "GetApk",
     display: "GetApk",
@@ -86,8 +86,8 @@ function Dashboard() {
           <div class="position-sticky">
             <div class="list-group list-group-flush mx-3 mt-4">
               {
-                Object.values(NAVS)?.map(({title, display, icon}) => (
-                  <Link to={title} key={title} class={`list-group-item list-group-item-action py-2 ${currentPage === title? "active": ""}`} aria-current="true" onClick={removeShowClass}><i class={icon}></i><span>{display}</span></Link>
+                Object.values(NAVS)?.map(({ title, display, icon }) => (
+                  <Link to={title} key={title} class={`list-group-item list-group-item-action py-2 ${currentPage === title ? "active" : ""}`} aria-current="true" onClick={removeShowClass}><i class={icon}></i><span>{display}</span></Link>
                 ))
               }
             </div>
@@ -125,8 +125,8 @@ function Dashboard() {
                   <img src={AdminUserImg} class="rounded-circle" height="25" alt="" />
                 </a>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
-                  <li><a class="dropdown-item">Home</a></li>
-                  <li><a class="dropdown-item" onClick={logout}>Logout</a></li>
+                  <li><Link class="dropdown-item ripple" to={"AllButtons"} >Home</Link></li>
+                  <li><Link class="dropdown-item ripple" to={""} onClick={logout}>Logout</Link></li>
                 </ul>
               </li>
             </ul>
@@ -135,9 +135,9 @@ function Dashboard() {
         </nav>
         {/* Navbar */}
       </header>
-        <body className="body">
-          <Body/>
-        </body>
+      <body className="body">
+        <Body />
+      </body>
     </div>
   );
 }
