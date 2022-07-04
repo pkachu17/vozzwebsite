@@ -121,7 +121,7 @@ const CreateButtons = () => {
                 </div>
                 <div className="CreateButtons-selection-area">
                     <div className="selection-menu">
-                        <textarea class="form-control" placeholder="Enter Text (required)" value={value} maxLength={12} onChange={(event) => setValue(event.target.value)} required="required" />
+                        <textarea class="form-control" placeholder="Enter Button Name (required)" value={value} maxLength={12} onChange={(event) => setValue(event.target.value)} required="required" />
                         <button type="button" class="btn btn-light" data-mdb-ripple-color="dark" onClick={() => speak({ text: value })}>Play</button>
                         <div className="color-picker">
                             Select Button color

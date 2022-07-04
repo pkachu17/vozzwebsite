@@ -87,8 +87,8 @@ const EditButton = ({ val }) => {
 
     return (
         <Fragment>
-            <i class="far fa-edit" style={{ color: 'yellow' }} data-toggle="modal" data-target={`#id${val.name+"pre"}`}></i>
-            <div class="modal fade" id={`id${val.name+"pre"}`}>
+            <i class="far fa-edit" style={{ color: 'yellow' }} data-toggle="modal" data-target={`#id${val.name + "pre"}`}></i>
+            <div class="modal fade" id={`id${val.name + "pre"}`}>
                 <div class="modal-dialog">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -104,9 +104,8 @@ const EditButton = ({ val }) => {
                                                 <img id="preview-image" src={url} />
                                             </div>
                                             <div className="preview-container-bottom">
-                                                <input type="file" onChange={handleChange} accept=".jpeg,.jpg,.png" />
-                                                <button className="img-upld-btn" onClick={handleUpload}>Upload</button>
-                                                <p>{percent}% done</p>
+                                                <input type="file" class="form-control" id="customFile" onChange={handleChange} accept=".jpeg,.jpg,.png" />
+                                                <button class="form-control" onClick={handleUpload}>&#128228; Upload  {percent}%</button>
                                             </div>
                                         </div>
 
