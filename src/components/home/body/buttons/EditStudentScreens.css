@@ -1,5 +1,4 @@
-/* CSS for EditStudentScreen javascript file */
-#screenOptions {
+#screenOptions{
     display: flex;
     flex-direction: row;
     align-items: center;

@@ -10,7 +10,7 @@ function AboutUs() {
 
   return (
     <div className="about">
-      <Header text="About Us" />
+      {/* <Header text="About Us" /> */}
       <div className="aboutSection">
         <h2><p><u><b>About App</b></u></p></h2>
         <p>VOZZZ is a mobile application which is android supported.The therapist uses a website and will have access to add or edit buttons and folders. The user/child who uses the app will be able to register themselves to the application and avail the buttons included by their speech therapist. On button click, the text is converted to a voice note, thus facilitating the app users with better communication.</p>

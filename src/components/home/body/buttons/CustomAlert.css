@@ -1,10 +1,3 @@
-.list-userss{
-    padding-left: 5%;
-    padding-right: 5%;
-    overflow-y: scroll;
-    height: 70vh;
-    scroll-behavior: smooth;
-}
 
 .body {
 	font-family: 'Varela Round', sans-serif;
@@ -90,14 +83,4 @@
 .trigger-btn {
 	display: inline-block;
 	margin: 100px auto;
-}
-
-#listScreen{
-    position: sticky;
-    top: 0;
-    background-color: rgba(245, 245, 245, 0.945);
-	
-}
-#listScreen tr th{
-	font-weight: bolder;
 }

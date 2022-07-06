@@ -1,4 +1,4 @@
-.AllButtons-area {
+.AllButtons-area{
     padding-top: 0vh;
     padding-bottom: 3vh;
     height: 80vh;
@@ -8,7 +8,7 @@
     /* background-color: aqua; */
 }
 
-.color-preview {
+.color-preview{
     width: 100%;
     height: 5vh;
     padding: 5px;
@@ -20,7 +20,7 @@
     background-color: rgb(242, 242, 242);
 }
 
-.button-image {
+.button-image{
     width: 100%;
     height: 100%;
     object-fit: contain;
@@ -29,22 +29,18 @@
     margin-right: auto;
 }
 
-/* CSS for AllButtons javascript page */
-
-#container {
-    width: 250px;
-    height: 180px;
-    align-items: center;
+#container{ 
+    width:250px;
+    height:180px;
+    align-items: center;  
     flex-direction: column;
     margin-left: auto;
     margin-right: auto;
 }
-
-#container1 {
-    align-items: center;
+#container1{ 
+    align-items: center; 
     flex-direction: column;
 }
-
-.allButtonSearch {
+.allButtonSearch{
     padding-left: 5%;
 }
