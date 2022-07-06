@@ -1,3 +1,4 @@
+// Import required dependencies for react, react components, firebase, images and style sheet
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -7,6 +8,7 @@ import AdminUserImg from "./admin-user-icon.jpg"
 import Body from "../home/body/Body";
 import "./Dashboard.css";
 
+// Defined sidebar navigation list data
 const NAVS = {
   ALL_BUTTONS: {
     title: "AllButtons",
@@ -50,19 +52,22 @@ const NAVS = {
   }
 }
 
+// Dashboard as a react component
 function Dashboard() {
-  const [user, loading, error] = useAuthState(auth);
+  // React Hooks for storing dashboard data
+  const [user, loading] = useAuthState(auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
   const sidebarRef = useRef();
   const currentPage = window.location.pathname?.split("/")?.pop();
 
+  // fetchUserName function fetches logged in User info from firebase db
   const fetchUserName = async () => {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
       const doc = await getDocs(q);
       const data = doc.docs[0].data();
-
+      // assign user name
       setName(data.name);
     } catch (err) {
       console.error(err);
@@ -70,20 +75,24 @@ function Dashboard() {
     }
   };
 
+  // useEffect hook checks if user is logged in also runs fetchUserName func
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/");
 
     fetchUserName();
-  }, [user, loading]);
+  });
 
+  // for active sidebar Highlight
   const removeShowClass = () => sidebarRef?.current?.classList?.remove('show');
 
   return (
     <div className="dashboard">
       <header>
+      {/* sidebar */}
         <nav id="sidebarMenu" ref={sidebarRef} class={`collapse d-lg-block sidebar collapse bg-white`}>
           <div class="position-sticky">
+          {/* sidebar menus */}
             <div class="list-group list-group-flush mx-3 mt-4">
               {
                 Object.values(NAVS)?.map(({ title, display, icon }) => (
@@ -107,23 +116,24 @@ function Dashboard() {
             </button>
 
             {/* Brand */}
-            <a class="navbar-brand"><h4>Vozzz</h4></a>
+            <Link to={""} class="navbar-brand"><h4>Vozzz</h4></Link>
 
 
             {/* Right links */}
             <ul class="navbar-nav ms-auto d-flex flex-row">
               {/*user name*/}
               <li class="nav-item">
-                <a class="nav-link me-3 me-lg-0 text-light">
-                  <h6>{user?.email}</h6>
-                </a>
+                <Link to={""} class="nav-link me-3 me-lg-0 text-light">
+                  {/* <h6>{user?.email}</h6> */}
+                  <h6>{name}</h6>
+                </Link>
               </li>
 
               {/* Avatar */}
               <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" href="#" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
+                <Link to={""} class="nav-link dropdown-toggle hidden-arrow d-flex align-items-center" id="navbarDropdownMenuLink" role="button" data-mdb-toggle="dropdown" aria-expanded="false">
                   <img src={AdminUserImg} class="rounded-circle" height="25" alt="" />
-                </a>
+                </Link>
                 <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdownMenuLink">
                   <li><Link class="dropdown-item ripple" to={"AllButtons"} >Home</Link></li>
                   <li><Link class="dropdown-item ripple" to={""} onClick={logout}>Logout</Link></li>
@@ -135,11 +145,12 @@ function Dashboard() {
         </nav>
         {/* Navbar */}
       </header>
+      {/* Body content */}
       <body className="body">
         <Body />
       </body>
     </div>
   );
 }
-
+// export Dashboard as react component
 export default Dashboard;

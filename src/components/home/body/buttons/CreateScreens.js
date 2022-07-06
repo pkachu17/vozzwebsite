@@ -1,36 +1,41 @@
+// Import required dependencies for react, react components, firebase, images and style sheet
 import React from "react";
 import { useState, useEffect } from "react";
-import Header from "../Header";
 import { app } from "../../../login/firebase";
-import { onSnapshot, query, where, getDocs, getDoc, doc, deleteDoc, updateDoc, writeBatch, runTransaction } from "firebase/firestore";
-import { getFirestore, setDoc, collection, deleteField } from "firebase/firestore";
-import "./CreateScreens.css";
+import { onSnapshot, query, where, getDocs, doc, deleteDoc, updateDoc } from "firebase/firestore";
+import { getFirestore, setDoc, collection } from "firebase/firestore";
 import EditScreenGrid from "./EditScreenGrid";
 import PreviewScreen from "./PreviewScreen";
+import Header from "../Header";
+import "./CreateScreens.css";
 
-
+// CreateScreens react component
 const CreateScreens = () => {
+    // Header value
     const headervalue = 'Create Screen';
+    // initializing firebase db
     const db = getFirestore(app);
+    // initializing useState hooks to dynamically store the screen data
     const [sname, setSname] = useState("");
     const [screens, setScreens] = useState([]);
     const [gridSize, setGridSize] = useState("");
     const [screenSearch, setScreenSearch] = useState("");
 
+    // ListScreens function fetches previously created screens
     const listScreens = async () => {
         onSnapshot(collection(db, "screens"), (snapshot) => {
-            console.log(snapshot.docs.map(doc => doc.data()));
             setScreens(snapshot.docs.map(doc => doc.data()));
-            //console.log(snapshot.docs.map(doc => doc.data()))
         });
     }
+
+    //addScreens funcitons stores the screen data in to the firebase db
     const addScreens = async (sname = null, gridSize = null) => {
         try {
             if (sname == null) { alert("Please enter Screen name"); }
             if (gridSize == null) { alert("Please select Grid Size"); }
             const userRef = query(collection(db, "screens"), where("sname", "==", sname));
             const result = await getDocs(userRef);
-            if (result.docs.length == 0) {
+            if (result.docs.length === 0) {
                 await setDoc(doc(db, "screens", sname), {
                     sname: sname,
                     pname: "preview" + sname,
@@ -51,6 +56,8 @@ const CreateScreens = () => {
         }
     }
     console.log(screens);
+
+    //deleteUserScreen1 deletes the screen if assigned to any user as screen1
     const deleteUserScreen1 = async (q) => {
         try {
             await updateDoc(doc(db, "students", q), {
@@ -61,6 +68,8 @@ const CreateScreens = () => {
             console.error("Error deleting Fields: ", e);
         }
     }
+
+    //deleteUserScreen2 deletes the screen if assigned to any user as screen2
     const deleteUserScreen2 = async (q) => {
         try {
             await updateDoc(doc(db, "students", q), {
@@ -71,6 +80,8 @@ const CreateScreens = () => {
             console.error("Error deleting Fields: ", e);
         }
     }
+
+    //deleteUserScreen3 deletes the screen if assigned to any user as screen3
     const deleteUserScreen3 = async (q) => {
         try {
             await updateDoc(doc(db, "students", q), {
@@ -81,6 +92,8 @@ const CreateScreens = () => {
             console.error("Error deleting Fields: ", e);
         }
     }
+
+    //deleteScreen function deletes the screen based on screen name when deleted by Web App user
     const deleteScreen = async (sname) => {
         try {
             console.log("from delete func", sname);
@@ -109,41 +122,47 @@ const CreateScreens = () => {
         }
     };
 
+    //reset funciton on called initializes the useState variables to empty or initial state
     const reset = () => {
         setSname("");
         setGridSize("");
     };
 
+    // useEffect hook runction listScreens when page is loaded in web browser
     useEffect(() => {
         listScreens();
-    }, []);
+    });
 
     return (
         <div className="CreateScreens">
+            {/* Header */}
             <Header text={headervalue} />
             <div className="screens__container">
+                {/* Create Screen input area */}
                 <div className="screenContainerLeft">
                     <input id="sUserInput" type="text" className="form-control rounded w-25" value={sname} maxLength={12} onChange={(e) => setSname(e.target.value)} placeholder="Screen Name" />
                     <select id="sUserInput" className="form-control rounded w-25" name="screen2" value={gridSize} onChange={e => setGridSize(e.target.value)}>
                         <option>Select Grid Size</option>
-                        <option value="2*2">2*2</option>
-                        <option value="2*3">2*3</option>
-                        <option value="3*4">3*4</option>
-                        <option value="3*5">3*5</option>
-                        <option value="4*4">4*4</option>
-                        <option value="4*5">4*5</option>
-                        <option value="4*6">4*6</option>
+                        <option value="2x2">2x2</option>
+                        <option value="2x3">2x3</option>
+                        <option value="3x4">3x4</option>
+                        <option value="3x5">3x5</option>
+                        <option value="4x4">4x4</option>
+                        <option value="4x5">4x5</option>
+                        <option value="4x6">4x6</option>
                     </select>
                     <button id="sUserInput" className="btn btn-success w-15" onClick={() => addScreens(sname.replaceAll(/\s/g, ''), gridSize)}>
                         Add Screen
                     </button>
                 </div>
+                {/*  Screen search area */}
                 <div className="screenContainerRight">
                     <input type="search" className="form-control rounded" value={screenSearch} onChange={(e) => setScreenSearch(e.target.value)} placeholder="Search..." />
                 </div>
             </div>
             <div className="list-screen">
                 <table className="table mt-0 text-center">
+                    {/* Screen list header */}
                     <thead id="listScreen">
                         <tr>
                             <th>Screen's Name</th>
@@ -153,6 +172,7 @@ const CreateScreens = () => {
                             <th>Delete</th>
                         </tr>
                     </thead>
+                    {/* Screen list data/rows uses Preview and EditScreenGrid as components */}
                     {screens.filter(button => button.sname.toLowerCase().includes(`${screenSearch}`.toLowerCase())).map((val, id) => {
                         return (
                             <tbody>
@@ -172,7 +192,7 @@ const CreateScreens = () => {
                                                     <h4 class="modal-title w-100">Are you sure?</h4>
                                                 </div>
                                                 <div class="modal-body">
-                                                    <p class="text-decoration-none">Do you really want to delete Screen: <b>{val.sname}</b>? <br /><i class="fas fa-exclamation-triangle" style={{ color: 'red' }}></i>Screen might be assigned to User!</p>
+                                                    <p class="text-decoration-none">Do you really want to delete Screen: <b>{val.sname}</b>?<br /><i class="fas fa-exclamation-triangle" style={{ color: 'red' }}></i>Screen might be assigned to User!</p>
                                                 </div>
                                                 <div class="modal-footer justify-content-center">
                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
@@ -188,7 +208,11 @@ const CreateScreens = () => {
                     })}
                 </table>
             </div>
+
         </div>
+
+
     );
 }
+//export CreateScreens as react component
 export default CreateScreens;

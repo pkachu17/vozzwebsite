@@ -1,20 +1,23 @@
+/* CSS for Information javascript page */
+.Information {
+    height: 91vh;
+}
+
+.Info-area {
+    height: 90%;
+    overflow-y: scroll;
+}
+
 .paragraph {
     padding-right: 5%;
     padding-left: 5%;
     text-align: justify;
     font-size: large;
-  }
+}
 
-.Information {
-    height: 91vh;
-}
-.Info-area{
-    height: 90%;
-    overflow-y: scroll;
-}
 .imagecss {
     width: 50%;
-    height:50%;
+    height: 50%;
     border: solid 5px rgb(29, 134, 227);
     display: block;
     margin-left: auto;
@@ -24,5 +27,5 @@
 h4 {
     padding-right: 5%;
     padding-left: 5%;
-    text-align: justify; 
+    text-align: justify;
 }

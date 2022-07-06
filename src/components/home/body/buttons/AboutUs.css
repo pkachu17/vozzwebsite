@@ -1,38 +1,23 @@
-.about-section {
-    width: 100%;
-    padding: 5%;
+/* CSS for AboutUs javascript page */
+
+.about{
+  height: 91vh;
+}
+
+.aboutSection {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-  
+    overflow-y: scroll;
     text-align: justify;
-    background-color: #5c73a6;
-    color: white;
-  }
-  .just-center {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    text-align: center;
-    width: 100vw;
-    padding-right: 10%;
     padding-left: 10%;
-    object-fit: contain;
+    padding-right: 10%;
   }
   
-  .just-center img{
+  .just-center-img img{
     display: block;
     margin: 0 auto;
     max-width: 100%;
     height: auto;
-  }
-  .our-team {
-    text-align: justify;
-    color: rgb(0, 0, 0);
-  }
-  .about-us {
-    background-color: #0b256c;
-    color: white;
   }

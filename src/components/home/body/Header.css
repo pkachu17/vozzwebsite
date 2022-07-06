@@ -1,3 +1,4 @@
+/* CSS for Header javascript file */
 *{
     margin: 0px;
     padding: 0px;
@@ -9,7 +10,7 @@
     background-color: rgb(247, 247, 247);
     display: flex;
     flex-direction: row;
-    align-items: center;
+    align-items:center;
     padding-left: 5%;
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-weight: bolder;

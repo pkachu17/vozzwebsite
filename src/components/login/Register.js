@@ -1,34 +1,36 @@
+// Import required dependencies for react, react components, firebase, images and style sheet
 import React, { useEffect, useState } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { Link, useNavigate } from "react-router-dom";
-import {
-  auth,
-  registerWithEmailAndPassword,
-  signInWithGoogle,
-} from "./firebase";
+import { auth, registerWithEmailAndPassword, signInWithGoogle } from "./firebase";
 import Brandgif from "./Vozzz.gif";
 import "./Register.css";
 
+// Register as react component
 function Register() {
+  // useState Hook variables for stroing users details and Login
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
+  // register function provides with registering Therapist/Doctor with Web Application
   const register = () => {
     if (!name) alert("Please enter name");
     registerWithEmailAndPassword(name, email, password);
   };
 
+  // useEffect hook to check if user is registered
   useEffect(() => {
     if (loading) return;
     if (user) navigate("/dashboard");
-  }, [user, loading]);
+  });
 
   return (
     <div className="register">
-    <ul class="circles">
+    {/* Floating Cubes */}
+      <ul class="circles">
         <li></li>
         <li></li>
         <li></li>
@@ -40,19 +42,13 @@ function Register() {
         <li></li>
         <li></li>
       </ul>
-      {/* <nav className="navbar navbar-expand-lg navbar-light fixed-top">
-        <div className="container">
-          <Link className="navbar-brand" to={'/sign-in'}>
-            Vozzz
-          </Link>
-        </div>
-      </nav> */}
       <div className="registertab">
+      {/* Brand gif/logo */}
         <div className="reg__art">
-          <img className="reg__art" src={Brandgif}></img>
+          <img className="reg__art" src={Brandgif} alt=""></img>
         </div>
         <div className="register__container">
-
+          {/* Registration form */}
           <input
             type="text"
             className="register__textBox"
@@ -85,20 +81,13 @@ function Register() {
           </button>
 
           <div>
-            Already have an account? <Link to="/">Login</Link> now.<br/>
-            <p className="copyrights">Copyrighted by Team Alpha <br/>(CSE 611)</p>
+            Already have an account? <Link to="/">Login</Link> now.<br />
+            <p className="copyrights">Copyrighted by Team Alpha <br />(CSE 611)</p>
           </div>
         </div>
       </div>
-      {/* <nav className="navbar navbar-expand-lg navbar-light fixed-bottom">
-        <div className="footer">
-          <div className="footer-brand" to={'/sign-in'}>
-            Copyrighted by Team Alpha (CSE 611)
-          </div>
-        </div>
-      </nav> */}
     </div>
   );
 }
-
+// export Register as react component
 export default Register;
