@@ -1,3 +1,4 @@
+// Import required dependencies for react, react components, firebase, images and style sheet
 import React from "react";
 import {Link, Routes, Route} from "react-router-dom";
 
@@ -14,9 +15,12 @@ import GetApk from "./buttons/GetApk";
 import AboutUs from "./buttons/AboutUs";
 import "./Body.css"
 
+// Body as react component
 const Body=()=>{
     return(
+        // Body
         <div className="bodyContainer">
+        {/* All routes/pages*/}
                 <Routes>
                     <Route exact path="/" element={<AllButtons/>} />
                     <Route exact path="/AllButtons" element={<AllButtons/>} />
@@ -34,4 +38,5 @@ const Body=()=>{
         </div>
     );
 }
+//export Body as a react component
 export default Body;

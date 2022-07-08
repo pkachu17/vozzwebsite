@@ -1,3 +1,16 @@
+//****************************************************************************
+//*************8*******CSE 611 - Master's Project*****************************
+//  Author          - Team Alpha
+//  Web App Ver.    - Vozzz v1.0
+//  Date            - July 6th 2022
+//  Mentor          - Prof Ramalingam Sridhar
+//  Client & Mentor - Prof Michael Buckley
+//  TA and support  - Pushkaraj Joshi
+//*****************University at Buffalo, New York ***************************
+//****************************************************************************
+
+// Import required dependencies for react, react components, firebase, images and style sheet
+
 import "./App.css";
 import '../node_modules/bootstrap/dist/css/bootstrap.min.css'
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";

@@ -1,3 +1,4 @@
+// Import required dependencies for react, react components, firebase, images and style sheet
 import React, { useEffect, useRef, useState } from "react";
 import { Link, useNavigate } from 'react-router-dom';
 import { useAuthState } from "react-firebase-hooks/auth";
@@ -7,6 +8,7 @@ import AdminUserImg from "./admin-user-icon.jpg"
 import Body from "../home/body/Body";
 import "./Dashboard.css";
 
+// Defined sidebar navigation list data
 const NAVS = {
   ALL_BUTTONS: {
     title: "AllButtons",
@@ -50,13 +52,16 @@ const NAVS = {
   }
 }
 
+// Dashboard as a react component
 function Dashboard() {
+  // React Hooks for storing dashboard data
   const [user, loading, error] = useAuthState(auth);
   const [name, setName] = useState("");
   const navigate = useNavigate();
   const sidebarRef = useRef();
   const currentPage = window.location.pathname?.split("/")?.pop();
 
+  // fetchUserName function fetches logged in User info from firebase db
   const fetchUserName = async () => {
     try {
       const q = query(collection(db, "users"), where("uid", "==", user?.uid));
@@ -70,6 +75,7 @@ function Dashboard() {
     }
   };
 
+  // useEffect hook checks if user is logged in also runs fetchUserName func
   useEffect(() => {
     if (loading) return;
     if (!user) return navigate("/");
@@ -77,13 +83,16 @@ function Dashboard() {
     fetchUserName();
   }, [user, loading]);
 
+    // for active sidebar Highlight
   const removeShowClass = () => sidebarRef?.current?.classList?.remove('show');
 
   return (
     <div className="dashboard">
       <header>
+      {/* sidebar */}
         <nav id="sidebarMenu" ref={sidebarRef} class={`collapse d-lg-block sidebar collapse bg-white`}>
           <div class="position-sticky">
+          {/* sidebar menus */}
             <div class="list-group list-group-flush mx-3 mt-4">
               {
                 Object.values(NAVS)?.map(({ title, display, icon }) => (
@@ -141,5 +150,5 @@ function Dashboard() {
     </div>
   );
 }
-
+// export Dashboard as react component
 export default Dashboard;

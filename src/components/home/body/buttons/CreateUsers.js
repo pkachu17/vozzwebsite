@@ -1,3 +1,4 @@
+// Import required dependencies for react, react components, firebase, images and style sheet
 import React, { Fragment } from "react";
 import { useState, useEffect } from "react";
 import Header from "../Header";
@@ -9,14 +10,19 @@ import { update } from "firebase/database";
 import { async } from "@firebase/util";
 import EditStudentScreens from "./EditStudentScreens";
 
+// Create User react component
 const CreateUsers = () => {
+    // initalize firebase db
     const db = getFirestore(app);
+    // Header value
     const headervalue = 'Create Users';
+    // useState hooks for storing User data dynamically
     const [uname, setUname] = useState("");
     const [uid, setUid] = useState("");
     const [search, setSearch] = useState("");
     const [students, setstudents] = useState([]);
 
+    // listUsers function load all previously created users
     const listUsers = async () => {
 
         onSnapshot(collection(db, "students"), (snapshot) => {
@@ -26,6 +32,7 @@ const CreateUsers = () => {
         });
     }
 
+    // deleteUser function deletes a user from firebase db based on student ID
     const deleteUser = async (sid) => {
         try {
             console.log("from delete func", sid);
@@ -37,11 +44,13 @@ const CreateUsers = () => {
         }
     };
 
+    // resetUserFields function brings all useState variable to empty/initial state
     const resetUserFields =()=>{
         setUname("");
         setUid("");
     };
 
+    //useEffect hook runs/loads listUsers function when page is loaded in Web browser
     useEffect(() => {
         listUsers();
     }, []);
@@ -49,10 +58,12 @@ const CreateUsers = () => {
     return (
         <Fragment>
             <div className="CreateUsers">
+            {/* Header */}
                 <Header text={headervalue} />
 
                 <div className="field-users">
                     <div className="user__container">
+                    {/* User details input field */}
                         <div className="userContainerLeft">
                             <input id="cUserInput" type="text" className="form-control rounded w-25" value={uname} onChange={(e) => setUname(e.target.value)} placeholder="User Name" />
                             <input id="cUserInput" type="text" className="form-control rounded w-25" value={uid} onChange={(e) => setUid(e.target.value)} placeholder="User id" />
@@ -67,6 +78,8 @@ const CreateUsers = () => {
                 </div>
                 <div className="list-user">
                     <table className="table mt-0 text-center">
+                        {/* List of previously created user */}
+                    {/* List Head */}
                         <thead id="listUsers">
                             <tr>
                                 <th>Student's Name</th>
@@ -78,6 +91,7 @@ const CreateUsers = () => {
                                 <th>Delete</th>
                             </tr>
                         </thead>
+                        {/* List Body */}
                         {students.filter(button => button.sname.toLowerCase().includes(`${search}`.toLowerCase())).map((val, id) => {
                             return (
                                 <tbody>
@@ -119,4 +133,5 @@ const CreateUsers = () => {
         </Fragment>
     );
 }
+// export CreateUsers as react component
 export default CreateUsers;

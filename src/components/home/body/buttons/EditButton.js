@@ -1,3 +1,4 @@
+// Import required dependencies for react, react components, firebase, images and style sheet
 import React, { Fragment, useState, useEffect } from "react";
 import { useAuthState } from "react-firebase-hooks/auth";
 import { UpdateButton, auth, db, storage } from "../../../login/firebase";
@@ -7,14 +8,16 @@ import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
 import useSpeechSynthesis from "react-speech-kit/dist/useSpeechSynthesis";
 import "./EditButton.css"
 
-
+// EditButton react component
 const EditButton = ({ val }) => {
+    // UseState hooks / variables for storing button data during edit
     const [user, loading, error] = useAuthState(auth);
     const [name, setName] = useState("");
     const navigate = useNavigate();
     const [url, setUrl] = useState(val.image_url);
     const [value, setValue] = useState(val.name);
     const [color, setColor] = useState(val.color);
+    // react speech synthesizer
     const { speak } = useSpeechSynthesis();
 
     const [file, setFile] = useState("");
@@ -78,6 +81,7 @@ const EditButton = ({ val }) => {
         );
     };
 
+    // Check if user is logged in
     useEffect(() => {
         if (loading) return;
         if (!user) return navigate("/");
@@ -134,5 +138,5 @@ const EditButton = ({ val }) => {
         </Fragment>
     );
 }
-
+// export EditButtons as react component
 export default EditButton;

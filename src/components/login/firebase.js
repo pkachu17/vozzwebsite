@@ -1,3 +1,4 @@
+// Import required dependencies for react, react components, firebase, images and style sheet
 import { initializeApp } from "firebase/app";
 
 import { getStorage } from "firebase/storage";
@@ -25,18 +26,8 @@ import {
 import { getDatabase } from "firebase/database";
 
 
-
+// FireBase configurations
 const firebaseConfig = {
-
-  //new
-  // apiKey: "AIzaSyDncyuDACBn3YZyd5Pp6zTFYi_3RqT3BKs",
-  // authDomain: "vozz-rp.firebaseapp.com",
-  // projectId: "vozz-rp",
-  // storageBucket: "vozz-rp.appspot.com",
-  // messagingSenderId: "93173898454",
-  // appId: "1:93173898454:web:92623db95c02aef03a3d77",
-  // measurementId: "G-T4TJBB9L5D"
-
   apiKey: "AIzaSyCHzYKSfA0fZXMLT5s6DZJSkwPw-DrmPFc",
   authDomain: "vozz1-ce312.firebaseapp.com",
   projectId: "vozz1-ce312",
@@ -45,7 +36,7 @@ const firebaseConfig = {
   appId: "1:1076365253821:web:39b8180ac010edfb026bd4",
   measurementId: "G-FRPF7DLJDB"
 };
-
+// Initializing firebase using above configurations
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 const db = getFirestore(app);
@@ -53,6 +44,7 @@ const database = getDatabase(app);
 
 const googleProvider = new GoogleAuthProvider();
 
+// AddUsers function to provide CreateUser component with adding new users/students
 const AddUsers = async (name, uid) => {
   try {
     const userRef = query(collection(db, "students"), where("sid", "==",uid));
@@ -75,7 +67,7 @@ const AddUsers = async (name, uid) => {
 }
 
 
-
+// AddButtons function to provide CreateButton component with adding new Buttons
 const AddButtons = async (value, url, color) => {
 
   try {
@@ -104,6 +96,7 @@ const deleteButtons = async (name) => {
   }
 };
 
+// AddButtons function to provide EditButton component with adding updated Buttons
 const UpdateButton = async (value, url, color) => {
   console.log(value, url, color);
   try {
@@ -117,7 +110,7 @@ const UpdateButton = async (value, url, color) => {
   }
 }
 
-
+// Signing in with Google account
 const signInWithGoogle = async () => {
   try {
     const res = await signInWithPopup(auth, googleProvider);
@@ -137,7 +130,7 @@ const signInWithGoogle = async () => {
     alert(err.message);
   }
 };
-
+// Loging in with Email ID and Password
 const logInWithEmailAndPassword = async (email, password) => {
   try {
     await signInWithEmailAndPassword(auth, email, password);
@@ -146,7 +139,7 @@ const logInWithEmailAndPassword = async (email, password) => {
     alert(err.message);
   }
 };
-
+// Register new User/Therapist/Doctor
 const registerWithEmailAndPassword = async (name, email, password) => {
   try {
     const res = await createUserWithEmailAndPassword(auth, email, password);
@@ -162,7 +155,7 @@ const registerWithEmailAndPassword = async (name, email, password) => {
     alert(err.message);
   }
 };
-
+// Password reset option when forgot password
 const sendPasswordReset = async (email) => {
   try {
     await sendPasswordResetEmail(auth, email);
@@ -172,11 +165,13 @@ const sendPasswordReset = async (email) => {
     alert(err.message);
   }
 };
-
+// User/Therapist/Doctor Logout
 const logout = () => {
   signOut(auth);
 };
+// Initializing firebase storage
 const storage = getStorage(app);
+// export firebase functionalities
 export {
   auth,
   app,

@@ -1,11 +1,13 @@
+// Import required dependencies for react, react components, firebase, images and style sheet
 import React, { Fragment, useState, useEffect } from "react";
 import { updateDoc, doc, onSnapshot, collection } from "firebase/firestore";
 import { db } from "../../../login/firebase";
 import Select from 'react-select';
 import "./EditStudentScreens.css"
 
+// EditStudentScreens react component
 const EditStudentScreens = ({ val }) => {
-
+    // useState hooks / variables for storing Screen details while editing Screens assign for a student
     const [details, setDetails] = useState(val);
     const [screens, setScreens] = useState([]);
     const [screenFilter1, setScreenFilter1] = useState("");
@@ -13,13 +15,14 @@ const EditStudentScreens = ({ val }) => {
     const [screenFilter3, setScreenFilter3] = useState("");
 
 
-
+    // fetchScreens function retrieves all previously created screens
     const fetchScreens = () => {
         onSnapshot(collection(db, "screens"), (snapshot) => {
             setScreens(snapshot.docs.map(doc => doc.data()));
         });
     };
 
+    // updateScreen function facilitates updation of a screen list for a user/student
     const updateScreen = async (e) => {
         e.preventDefault();
         await updateDoc(doc(db, "students", details.sid), {
@@ -28,25 +31,28 @@ const EditStudentScreens = ({ val }) => {
             screen3: details.screen3
         })
     }
+
+    //useEffect hook runs/loads screen list for student/user
     useEffect(() => {
         fetchScreens();
     }, []);
 
     return (
         <Fragment>
+        {/* Modal Button */}
             <button type="button" class="btn btn-warning" data-toggle="modal" data-target={`#id${val.sid}`}>
                 <i class="far fa-edit" style={{color: 'white'}}></i>
             </button>
-
+            {/* Modal */}
             <div class="modal" id={`id${val.sid}`}>
                 <div class="modal-dialog">
                     <div class="modal-content">
-
+                        {/* Modal Header */}
                         <div class="modal-header">
                             <h4 class="modal-title">Edit Screen for : {val.sname}</h4>
                             <button type="button" class="close" data-dismiss="modal">&times;</button>
                         </div>
-
+                        {/* Modal Body */}
                         <div class="modal-body">
                             <div id="screenOptions">
                                 <input type="search" className="form-control rounded w-25" value={screenFilter1} onChange={(e) => setScreenFilter1(e.target.value)} placeholder="Search..." />
@@ -76,7 +82,7 @@ const EditStudentScreens = ({ val }) => {
                                 </select>
                             </div>
                         </div>
-
+                        {/* Modal Footer */}
                         <div class="modal-footer">
                             <button type="button" class="btn btn-success" data-dismiss="modal" onClick={e => updateScreen(e)}>Save</button>
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
@@ -88,5 +94,5 @@ const EditStudentScreens = ({ val }) => {
         </Fragment>
     );
 }
-
+// export EditStudentScreens as react component
 export default EditStudentScreens;

@@ -1,3 +1,4 @@
+// Import required dependencies for react, react components, firebase, images and style sheet
 import React from "react";
 import { useState, useEffect } from "react";
 import Header from "../Header";
@@ -7,9 +8,13 @@ import { onSnapshot, doc, deleteDoc } from "firebase/firestore";
 import { getFirestore, getDocs, getDoc, collection, snapshotEqual } from "firebase/firestore";
 import "./EditScreen.css";
 
+// EditScreen as react component
 const EditScreen = () => {
+    //initialize db
     const db = getFirestore(app);
+    //header value
     const headervalue = 'Create Screens';
+    //react usestate hooks for storing data in to variables dynamically
     const [name, screenName] = useState("");
     const [id,screenID] = useState('');
     const [size,gridSize] = useState('');
@@ -31,6 +36,7 @@ const EditScreen = () => {
           console.error("Error deleting document: ", e);}
         };
 
+        //loads listScreens func when page is loaded
     useEffect(() => {
         listScreens();
       }, []);
@@ -69,4 +75,5 @@ const EditScreen = () => {
         </div>
     );
 }
+//export as react component
 export default EditScreen;

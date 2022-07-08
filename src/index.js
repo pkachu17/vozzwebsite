@@ -1,3 +1,13 @@
+//****************************************************************************
+//*************8*******CSE 611 - Master's Project*****************************
+//  Author          - Team Alpha
+//  Web App Ver.    - Vozzz v1.0
+//  Date            - July 6th 2022
+//  Mentor          - Prof Ramalingam Sridhar
+//  Client & Mentor - Prof Michael Buckley
+//  TA and support  - Pushkaraj Joshi
+//*****************University at Buffalo, New York ***************************
+//****************************************************************************
 import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
