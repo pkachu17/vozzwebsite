@@ -28,13 +28,21 @@ import { getDatabase } from "firebase/database";
 
 // FireBase configurations
 const firebaseConfig = {
-  apiKey: "AIzaSyCHzYKSfA0fZXMLT5s6DZJSkwPw-DrmPFc",
-  authDomain: "vozz1-ce312.firebaseapp.com",
-  projectId: "vozz1-ce312",
-  storageBucket: "vozz1-ce312.appspot.com",
-  messagingSenderId: "1076365253821",
-  appId: "1:1076365253821:web:39b8180ac010edfb026bd4",
-  measurementId: "G-FRPF7DLJDB"
+//   apiKey: "AIzaSyCHzYKSfA0fZXMLT5s6DZJSkwPw-DrmPFc",
+//   authDomain: "vozz1-ce312.firebaseapp.com",
+//   projectId: "vozz1-ce312",
+//   storageBucket: "vozz1-ce312.appspot.com",
+//   messagingSenderId: "1076365253821",
+//   appId: "1:1076365253821:web:39b8180ac010edfb026bd4",
+//   measurementId: "G-FRPF7DLJDB"
+  
+  apiKey: "AIzaSyCCIaFohWauN1G1lHgtmNUuCShp5-KLukI",
+  authDomain: "myof-e827c.firebaseapp.com",
+  projectId: "myof-e827c",
+  storageBucket: "myof-e827c.appspot.com",
+  messagingSenderId: "786091329968",
+  appId: "1:786091329968:web:381ee8fac762b98ab56e75",
+  measurementId: "G-1CKGD4C3Y7"
 };
 // Initializing firebase using above configurations
 const app = initializeApp(firebaseConfig);
